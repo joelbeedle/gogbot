@@ -18,11 +18,11 @@ async def on_ready():
 @bot.command(name='quote', help='funny')
 async def quote(ctx, person: str):
     print(f'🚀 Quote for {person} requested. . .')
-    people = {'fred': ['dude', 'wanna try my dubai tobacco', '*inhales vape*'],
+    people = {'fred': ['dude', '*vapes*'],
               'crocker': ['Chemistry', 'elliot', 'gog', 'joji'],
-              'matt': ['Chemistry', 'drink', 'gogger', 'gog', '🤙🤙'],
-              'jude': ['mysterious', 'girl', 'rampager', 'otis'],
-              'joel': ['ay']}
+              'matt': ['Chemistry', 'gogger', 'gog', '🤙🤙'],
+              'jude': ['mysterious', 'girl', 'rampage'],
+              'joel': ['🍆']}
     response = ''
     if person in people:
         response = random.choice(people[person])
