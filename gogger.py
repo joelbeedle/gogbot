@@ -1,10 +1,11 @@
-import random
 import os
+import random
+from dotenv import load_dotenv
+
 from colorama import Fore
 from colorama import Style
 
 from discord.ext import commands
-from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
