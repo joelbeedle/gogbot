@@ -17,6 +17,7 @@ async def on_ready():
 
 @bot.command(name='quote', help='funny')
 async def quote(ctx, person: str):
+    print(f'🚀 Quote for {person} requested. . .')
     people = {'fred': ['dude', 'wanna try my dubai tobacco', '*inhales vape*'],
               'crocker': ['Chemistry', 'elliot', 'gog', 'joji'],
               'matt': ['Chemistry', 'drink', 'gogger', 'gog', '🤙🤙'],
@@ -27,6 +28,7 @@ async def quote(ctx, person: str):
         response = random.choice(people[person])
     else:
         response = f'{person} 🥶'
+    print(f'👍 Replied: {response}')
     await ctx.send(response)
 
 
@@ -72,7 +74,7 @@ async def gog(ctx):
     response = ''
     for i in range(1, random.randint(1, 300)):
         response += random.choice(gog_list)
-
+    print(f'🙏 gog')
     await ctx.send(f'📖 Gog said: {response}')
 
 
