@@ -81,7 +81,7 @@ async def gog(ctx):
     gog_list = ['gog ', 'gogger ', 'gogging ', 'gogged ',
                 'gogs ', 'goggers ', 'goggings ', 'gog ']
     response = ''
-    for i in range(1, random.randint(1, 300)):
+    for _ in range(1, random.randint(1, 300)):
         response += random.choice(gog_list)
     print(f'🙏 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > gog')
     await ctx.send(f'📖 Gog said: {response}')
