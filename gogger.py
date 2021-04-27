@@ -26,14 +26,9 @@ async def on_ready():
 
 @bot.command(name='quote', help='funny')
 async def quote(ctx, person: str):
-<<<<<<< HEAD
     print(
-        f'🚀 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > Quote for {person} requested. . .')
-    people = {'fred': ['dude', 'wanna try my dubai tobacco', '*inhales vape*'],
-=======
-    print(f'🚀 Quote for {person} requested. . .')
+        f'🚀 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > Quote for {person} requested')
     people = {'fred': ['dude', '*vapes*'],
->>>>>>> e8094245cdb2d38ae0a67c0c6680a83530e550c2
               'crocker': ['Chemistry', 'elliot', 'gog', 'joji'],
               'matt': ['Chemistry', 'gogger', 'gog', '🤙🤙'],
               'jude': ['mysterious', 'girl', 'rampage'],
