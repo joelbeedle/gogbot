@@ -1,5 +1,11 @@
 import random
+import os
+
 from discord.ext import commands
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 bot = commands.Bot(command_prefix='$')
 
@@ -55,4 +61,4 @@ async def gog(ctx):
     await ctx.send(f'📖 Gog said: {response}')
 
 
-bot.run('NzkzMzE0Mzk3NDY0Mjk3NDcy.X-qdmw.aO3SrTotmsAFkm3gy-tjD_DGYL0')
+bot.run(TOKEN)
