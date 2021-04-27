@@ -15,6 +15,21 @@ async def on_ready():
     print(f'🚀 {bot.user.name} has connected to the Fellowship of the Gog!')
 
 
+@bot.command(name='quote', help='funny')
+async def quote(ctx, person: str):
+    people = {'fred': ['dude', 'wanna try my dubai tobacco', '*inhales vape*'],
+              'crocker': ['Chemistry', 'elliot', 'gog', 'joji'],
+              'matt': ['Chemistry', 'drink', 'gogger', 'gog', '🤙🤙'],
+              'jude': ['mysterious', 'girl', 'rampager', 'otis'],
+              'joel': ['ay']}
+    response = ''
+    if person in people:
+        response = random.choice(people[person])
+    else:
+        response = f'{person} 🥶'
+    await ctx.send(response)
+
+
 @bot.command(name='fred')
 async def fred(ctx):
     fred_quotes = ['dude', 'wanna try my dubai tobacco', '*inhales vape*']
