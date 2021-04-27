@@ -1,23 +1,32 @@
 import random
 import os
+from colorama import Fore
+from colorama import Style
 
 from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix='$')
+
+GOGBOT = '{Fore.CYAN}{bot.user.name}{Style.RESET_ALL}'
 
 
 @bot.event
 async def on_ready():
-    print(f'🚀 {bot.user.name} has connected to the Fellowship of the Gog!')
+    for guild in bot.guilds:
+        if guild.name == GUILD:
+            break
+    print(f'🚀 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} has connected to {Fore.CYAN}{guild.name}{Style.RESET_ALL}')
 
 
 @bot.command(name='quote', help='funny')
 async def quote(ctx, person: str):
-    print(f'🚀 Quote for {person} requested. . .')
+    print(
+        f'🚀 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > Quote for {person} requested. . .')
     people = {'fred': ['dude', 'wanna try my dubai tobacco', '*inhales vape*'],
               'crocker': ['Chemistry', 'elliot', 'gog', 'joji'],
               'matt': ['Chemistry', 'drink', 'gogger', 'gog', '🤙🤙'],
@@ -28,7 +37,7 @@ async def quote(ctx, person: str):
         response = random.choice(people[person])
     else:
         response = f'{person} 🥶'
-    print(f'👍 Replied: {response}')
+    print(f'👍 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > Replied: {response}')
     await ctx.send(response)
 
 
@@ -74,7 +83,7 @@ async def gog(ctx):
     response = ''
     for i in range(1, random.randint(1, 300)):
         response += random.choice(gog_list)
-    print(f'🙏 gog')
+    print(f'🙏 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > gog')
     await ctx.send(f'📖 Gog said: {response}')
 
 
