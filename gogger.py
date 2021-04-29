@@ -1,5 +1,7 @@
 import os
 import random
+import json
+
 from dotenv import load_dotenv
 
 from colorama import Fore
@@ -27,17 +29,39 @@ async def on_ready():
 async def quote(ctx, person: str):
     print(
         f'🚀 {GOGBOT} > Quote for {person} requested')
-    people = {'fred': ['dude', '*vapes*'],
-              'crocker': ['Chemistry', 'elliot', 'gog', 'joji'],
-              'matt': ['Chemistry', 'gogger', 'gog', '🤙🤙'],
-              'jude': ['mysterious', 'girl', 'rampage'],
-              'joel': ['🍆']}
+
+    with open('quotes.json', 'r') as f:
+        people = json.load(f)
+
     response = ''
     if person in people:
         response = random.choice(people[person])
     else:
         response = f'{person} 🥶'
     print(f'👍 {GOGBOT} > Replied: {response}')
+    await ctx.send(response)
+
+
+@bot.command(name='add_quote')
+async def add_quote(ctx, person: str, quote: str):
+    print(f'🚀 {GOGBOT} > Adding quote requested')
+    # JSON DUMPS library.
+    quotes = {}
+    response = ''
+
+    with open('quotes.json', 'r') as f:
+        quotes = json.load(f)
+
+    if person in quotes:
+        quotes[person].append(quote)
+        response = f'added quote: {quote} to {person}\'s quotes'
+    else:
+        print('Error')
+        response = f'{person} doesn\'t exist you twat'
+    with open('quotes.json', 'w') as f:
+        json.dump(quotes, f)
+
+    print(f'👍 {GOGBOT} > {Fore.CYAN}{quote}{Style.RESET_ALL} added to {Fore.CYAN}{person}\'s{Style.RESET_ALL} quotes')
     await ctx.send(response)
 
 
