@@ -13,21 +13,20 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix='$')
 
-GOGBOT = '{Fore.CYAN}{bot.user.name}{Style.RESET_ALL}'
+GOGBOT = f'{Fore.CYAN}GogBot{Style.RESET_ALL}'
 
 
 @bot.event
 async def on_ready():
     for guild in bot.guilds:
-        if guild.name == GUILD:
-            break
-    print(f'🚀 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} has connected to {Fore.CYAN}{guild.name}{Style.RESET_ALL}')
+        print(
+            f'🚀 {GOGBOT} has connected to {Fore.CYAN}{guild.name}{Style.RESET_ALL}')
 
 
 @bot.command(name='quote', help='funny')
 async def quote(ctx, person: str):
     print(
-        f'🚀 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > Quote for {person} requested')
+        f'🚀 {GOGBOT} > Quote for {person} requested')
     people = {'fred': ['dude', '*vapes*'],
               'crocker': ['Chemistry', 'elliot', 'gog', 'joji'],
               'matt': ['Chemistry', 'gogger', 'gog', '🤙🤙'],
@@ -38,7 +37,7 @@ async def quote(ctx, person: str):
         response = random.choice(people[person])
     else:
         response = f'{person} 🥶'
-    print(f'👍 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > Replied: {response}')
+    print(f'👍 {GOGBOT} > Replied: {response}')
     await ctx.send(response)
 
 
@@ -49,7 +48,7 @@ async def gog(ctx):
     response = ''
     for _ in range(1, random.randint(1, 300)):
         response += random.choice(gog_list)
-    print(f'🙏 {Fore.CYAN}{bot.user.name}{Style.RESET_ALL} > gog')
+    print(f'🙏 {GOGBOT} > gog')
     await ctx.send(f'📖 Gog said: {response}')
 
 
