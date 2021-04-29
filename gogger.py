@@ -97,5 +97,4 @@ async def gog(ctx):
     print(f'🙏 {GOGBOT} > gog')
     await ctx.send(f'📖 Gog said: {response}')
 
-
 bot.run(TOKEN)
