@@ -60,7 +60,7 @@ async def add_quote(ctx, person: str, quote: str):
         quote (str): the quote to add to the person's list of quotes.
     """
     print(f'🚀 {GOGBOT} > Adding quote requested')
-    quotes = {}
+    quotes: dict = {}
     response = ''
 
     with open(json_file, 'r') as f:
@@ -70,8 +70,8 @@ async def add_quote(ctx, person: str, quote: str):
         quotes[person].append(quote)
         response = f'added quote: {quote} to {person}\'s quotes'
     else:
-        print('Error')
-        response = f'{person} doesn\'t exist you twat'
+        quotes[person] = [quote]
+        response = f'added {person} and added quote: {quote}'
 
     with open(json_file, 'w') as f:
         json.dump(quotes, f)
